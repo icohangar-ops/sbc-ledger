@@ -1,9 +1,8 @@
 """ASC 718 share-based compensation.
 
-Koil Energy's origin weakness is share-based payments. This engine keeps a
-grant register, measures options with Black-Scholes when FV is not supplied,
-accrues compensation cost on a straight-line service period with a forfeiture
-estimate, and true-ups for actual forfeitures.
+Grant register, Black-Scholes when grant-date FV is not supplied, straight-line
+accrual over the service period with a forfeiture estimate, and true-up for
+actual forfeitures.
 
 It does not choose volatility, the risk-free rate, or expected term. Those
 are inputs. The control owner signs them.

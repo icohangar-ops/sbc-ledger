@@ -2,7 +2,7 @@
 
 > **Cubiczan stack** — [CHP](https://github.com/Cubiczan/consensus-hardening-protocol) · [control-spine](https://github.com/Cubiczan/control-spine) · **You are here:** `sbc-ledger`
 
-**ASC 718 share-based compensation.** Grant register, Black-Scholes when grant-date FV is not supplied, straight-line service-period expense, forfeiture estimate and actual-forfeiture true-up, evidence pack. Koil Energy's origin weakness was share-based payments. There was no repo. Now there is.
+**ASC 718 share-based compensation.** Grant register, Black-Scholes when grant-date FV is not supplied, straight-line service-period expense, forfeiture estimate and actual-forfeiture true-up, evidence pack. Built for any listed company whose share-based payment control cannot be reperformed from the equity ledger.
 
 The engine does not choose volatility, the risk-free rate, or expected term. Those stay with the control owner. The number is recomputable.
 
