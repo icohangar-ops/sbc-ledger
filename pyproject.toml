@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sbc-ledger"
+version = "0.1.0"
+description = "Deterministic ASC 718 share-based compensation engine: grant register, Black-Scholes, vesting expense, evidence pack."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Cubiczan", email = "sam@cubiczan.com" }]
+license = { text = "MIT" }
+keywords = ["asc-718", "share-based-payments", "icfr", "audit-trail"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+sbc-ledger = "sbc_ledger.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

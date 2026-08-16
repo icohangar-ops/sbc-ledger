@@ -1,0 +1,25 @@
+{
+  "grants": [
+    {
+      "grant_id": "RSU-1",
+      "award_type": "rsu",
+      "grant_date": "2026-01-01",
+      "shares": 10000,
+      "service_years": "2",
+      "grant_date_fv": "12",
+      "expected_forfeiture_rate": "0.00"
+    },
+    {
+      "grant_id": "OPT-1",
+      "award_type": "option",
+      "grant_date": "2026-01-01",
+      "shares": 1000,
+      "service_years": "4",
+      "strike": "10",
+      "spot": "10",
+      "expected_term_years": "4",
+      "risk_free_rate": "0.05",
+      "volatility": "0.40"
+    }
+  ]
+}
