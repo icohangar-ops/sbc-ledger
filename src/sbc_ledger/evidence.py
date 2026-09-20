@@ -15,7 +15,7 @@ ENGINE_ID = "sbc-ledger-engine"
 ENGINE_VERSION = "0.1.0"
 
 
-def evidence_pack(rows: tuple[PeriodExpense, ...], period_label: str, owner: str) -> dict:
+def evidence_pack(rows: tuple[PeriodExpense, ...], period_label: str, owner: str, invoked_via: str | None = None) -> dict:
     total = money(sum((r.period_cost for r in rows), Decimal("0")))
     remaining = money(sum((r.remaining for r in rows), Decimal("0")))
     pack = {
@@ -42,6 +42,8 @@ def evidence_pack(rows: tuple[PeriodExpense, ...], period_label: str, owner: str
         "owner_signoff": owner,
         "conclusion": f"Period compensation cost {total}. Owner confirms grant population against the equity ledger.",
     }
+    if invoked_via is not None:
+        pack["invoked_via"] = invoked_via
     return seal(
         pack,
         engine_id=ENGINE_ID,
