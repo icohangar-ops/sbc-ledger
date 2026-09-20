@@ -33,3 +33,13 @@ Not a substitute for a signed valuation memo on a novel award (market conditions
 ## Compliance spine
 
 Vendored `control-spine`. Volatility, term, and the risk-free rate are committed as foundation assumptions, not estimated here. Unsigned packs stay `EXPLORING`. Only a named owner reaches `LOCKED`.
+
+## MCP server
+
+`src/sbc_ledger/mcp_server.py` publishes the engine over Model Context Protocol: a thin wrapper in the `io.github.Cubiczan` namespace (stdio transport) whose tools — `measure_grant_expense`, `grant_unit_fair_value`, and `sbc_evidence_pack` — call `sbc_ledger.engine` and `sbc_ledger.evidence` verbatim. All measurement logic lives in the engine module; the wrapper adds no logic, touches no network, and never estimates volatility, rates, or expected term — those stay owner inputs.
+
+```bash
+uvx --from sbc-ledger sbc-ledger-mcp
+# or from a checkout:
+python -m sbc_ledger.mcp_server
+```
