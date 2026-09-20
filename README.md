@@ -41,5 +41,5 @@ Vendored `control-spine`. Volatility, term, and the risk-free rate are committed
 ```bash
 uvx --from 'sbc-ledger[mcp]' sbc-ledger-mcp
 # or from a checkout:
-uv run --with 'mcp<2' --with . python -m sbc_ledger.mcp_server
+uv run --with 'mcp>=1.2,<2' --with . python -m sbc_ledger.mcp_server
 ```

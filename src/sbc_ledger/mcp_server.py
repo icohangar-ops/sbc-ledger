@@ -156,9 +156,9 @@ def sbc_evidence_pack(
         for item in grants
     )
     pack = evidence_pack(
-        rows, period_label or f"{period_start} to {period_end}", owner=""
+        rows, period_label or f"{period_start} to {period_end}",
+        owner="", invoked_via="mcp",
     )
-    pack["invoked_via"] = "mcp"
     return _jsonify(pack)
 
 
