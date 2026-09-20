@@ -56,7 +56,9 @@ def test_evidence_pack_totals_population() -> None:
         period_start="2026-01-01",
         period_end="2027-01-01",
         period_label="H1 2026",
-        owner="Controller",
     )
     assert pack["population_count"] == 1
+    assert pack["lock_state"] == "EXPLORING"
+    assert pack["is_evidence"] is False
+    assert pack["invoked_via"] == "mcp"
     assert pack["period_cost"] == "60000.00"

@@ -36,7 +36,7 @@ Vendored `control-spine`. Volatility, term, and the risk-free rate are committed
 
 ## MCP server
 
-`src/sbc_ledger/mcp_server.py` publishes the engine over Model Context Protocol: a thin wrapper in the `io.github.Cubiczan` namespace (stdio transport) whose tools — `measure_grant_expense`, `grant_unit_fair_value`, and `sbc_evidence_pack` — call `sbc_ledger.engine` and `sbc_ledger.evidence` verbatim. All measurement logic lives in the engine module; the wrapper adds no logic, touches no network, and never estimates volatility, rates, or expected term — those stay owner inputs.
+`src/sbc_ledger/mcp_server.py` publishes the engine over Model Context Protocol: a thin wrapper in the `io.github.Cubiczan` namespace (stdio transport) whose tools — `measure_grant_expense`, `grant_unit_fair_value`, and `sbc_evidence_pack` — call `sbc_ledger.engine` and `sbc_ledger.evidence` verbatim. All measurement logic lives in the engine module; the wrapper adds no logic, touches no network, and never estimates volatility, rates, or expected term — those stay owner inputs. Evidence packs built through MCP are always unsigned — the tool takes no owner, so the spine renders `EXPLORING` and `is_evidence: false`; a named human signs via the CLI (`--owner`), never through MCP. Note: `mcp` is deliberately a hard dependency — an optional extra would ship a server that cannot start from a default install; CLI-only and library installs in dependency-controlled audit environments still carry the MCP SDK.
 
 ```bash
 uvx --from sbc-ledger sbc-ledger-mcp

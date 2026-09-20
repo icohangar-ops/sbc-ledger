@@ -130,7 +130,6 @@ def sbc_evidence_pack(
     period_start: str,
     period_end: str,
     period_label: str = "",
-    owner: str = "",
 ) -> dict[str, Any]:
     """Build the ASC 718 evidence pack a tester can reperform without the source code.
 
@@ -144,7 +143,9 @@ def sbc_evidence_pack(
         period_start: ISO date the accrual period starts.
         period_end: ISO date the accrual period ends.
         period_label: Close period label; defaults to "<start> to <end>".
-        owner: Named owner for sign-off. Must not be the engine.
+        Sign-off: MCP never accepts an owner — packs built here are always
+        unsigned (EXPLORING, not evidence). A named human signs via the CLI
+        (--owner), never through MCP.
     """
     start = date.fromisoformat(period_start)
     end = date.fromisoformat(period_end)
@@ -154,7 +155,11 @@ def sbc_evidence_pack(
         )
         for item in grants
     )
-    return _jsonify(evidence_pack(rows, period_label or f"{period_start} to {period_end}", owner))
+    pack = evidence_pack(
+        rows, period_label or f"{period_start} to {period_end}", owner=""
+    )
+    pack["invoked_via"] = "mcp"
+    return _jsonify(pack)
 
 
 def main() -> None:
