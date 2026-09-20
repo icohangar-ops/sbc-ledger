@@ -11,10 +11,11 @@ requires-python = ">=3.10"
 authors = [{ name = "Cubiczan", email = "sam@cubiczan.com" }]
 license = { text = "MIT" }
 keywords = ["asc-718", "share-based-payments", "icfr", "audit-trail"]
-dependencies = ["mcp>=1.2,<2"]
+dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+mcp = ["mcp>=1.2,<2"]
 
 [project.scripts]
 sbc-ledger = "sbc_ledger.cli:main"

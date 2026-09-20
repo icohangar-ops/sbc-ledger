@@ -36,10 +36,10 @@ Vendored `control-spine`. Volatility, term, and the risk-free rate are committed
 
 ## MCP server
 
-`src/sbc_ledger/mcp_server.py` publishes the engine over Model Context Protocol: a thin wrapper in the `io.github.Cubiczan` namespace (stdio transport) whose tools — `measure_grant_expense`, `grant_unit_fair_value`, and `sbc_evidence_pack` — call `sbc_ledger.engine` and `sbc_ledger.evidence` verbatim. All measurement logic lives in the engine module; the wrapper adds no logic, touches no network, and never estimates volatility, rates, or expected term — those stay owner inputs. Evidence packs built through MCP are always unsigned — the tool takes no owner, so the spine renders `EXPLORING` and `is_evidence: false`; a named human signs via the CLI (`--owner`), never through MCP. Note: `mcp` is deliberately a hard dependency — an optional extra would ship a server that cannot start from a default install; CLI-only and library installs in dependency-controlled audit environments still carry the MCP SDK.
+`src/sbc_ledger/mcp_server.py` publishes the engine over Model Context Protocol: a thin wrapper in the `io.github.Cubiczan` namespace (stdio transport) whose tools — `measure_grant_expense`, `grant_unit_fair_value`, and `sbc_evidence_pack` — call `sbc_ledger.engine` and `sbc_ledger.evidence` verbatim. All measurement logic lives in the engine module; the wrapper adds no logic, touches no network, and never estimates volatility, rates, or expected term — those stay owner inputs. Evidence packs built through MCP are always unsigned — the tool takes no owner, so the spine renders `EXPLORING` and `is_evidence: false`; a named human signs via the CLI (`--owner`), never through MCP. MCP access is opt-in, keeping the deterministic core zero-dependency: the engine and CLI install with no runtime dependencies, and the MCP server ships behind the `mcp` extra (`pip install 'sbc-ledger[mcp]'`) — chosen over a hard dependency after prelint review, since a default install must stay dependency-free. CI installs `.[dev,mcp]` so the MCP tests still run.
 
 ```bash
-uvx --from sbc-ledger sbc-ledger-mcp
+uvx --from 'sbc-ledger[mcp]' sbc-ledger-mcp
 # or from a checkout:
-python -m sbc_ledger.mcp_server
+uv run --with 'mcp<2' --with . python -m sbc_ledger.mcp_server
 ```
