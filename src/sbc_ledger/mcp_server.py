@@ -7,7 +7,7 @@ nothing here touches the network, and volatility / risk-free rate / expected
 term stay owner-supplied inputs, never model estimates.
 
 Follows the same publishing path proven by invoice-audit-engine /
-codesentinel: namespace ``io.github.Cubiczan``, stdio transport, published
+codesentinel: namespace ``io.github.icohangar-ops/sbc-ledger``, stdio transport, published
 via the ``mcp-publisher`` CLI.
 
 Run it:
