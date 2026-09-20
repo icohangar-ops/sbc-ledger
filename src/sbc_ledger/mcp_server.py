@@ -12,9 +12,9 @@ via the ``mcp-publisher`` CLI.
 
 Run it:
 
-    uvx --from sbc-ledger sbc-ledger-mcp
+    uvx --from 'sbc-ledger[mcp]' sbc-ledger-mcp
     # or, from a checkout:
-    python -m sbc_ledger.mcp_server
+    uv run --with 'mcp>=1.2,<2' --with . python -m sbc_ledger.mcp_server
 """
 
 from __future__ import annotations
